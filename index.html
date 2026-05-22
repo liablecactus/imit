@@ -27,9 +27,8 @@
 <body class="w-full mx-auto min-h-screen flex flex-col bg-[#e5d3be]">
 
     <header id="mobile-header" class="bg-[#4fbcd4] text-white px-4 py-3 flex md:hidden justify-between items-center sticky top-0 z-50 shadow-md">
-        <h1 class="text-xl font-normal tracking-wide cursor-pointer" onclick="showPage('start-page')">Kurt-Schumacher-Schule</h1>
+        <h1 id="mobile-secret-trigger" class="text-xl font-normal tracking-wide cursor-pointer select-none">Kurt-Schumacher-Schule</h1>
         <div class="flex items-center gap-4">
-            <button onclick="showPage('admin-page')" class="text-white/80 hover:text-white p-1"><i class="fa-solid fa-gear text-xl"></i></button>
             <button class="border border-white/50 rounded-md px-2.5 py-1"><i class="fa-solid fa-bars text-xl"></i></button>
         </div>
     </header>
@@ -46,7 +45,7 @@
                     <p class="text-[10px] opacity-75 font-light mt-1">"Schulportal Hessen - Pädagogische Organisation"</p>
                 </div>
             </div>
-            <button onclick="showPage('admin-page')" class="bg-black/20 hover:bg-black/30 text-white font-bold py-1.5 px-4 rounded text-xs flex items-center gap-1.5 transition-all mb-1"><i class="fa-solid fa-gear"></i> Live-Admin Dashboard</button>
+            <span class="text-[10px] opacity-40 select-none pb-1">v4.8.2-stable</span>
         </div>
         <div class="bg-[#00a2b9] text-white px-8 py-2 flex justify-between items-center text-xs font-medium">
             <div class="flex items-center gap-6">
@@ -62,13 +61,11 @@
     </header>
 
     <main id="start-page" class="p-3 md:p-8 max-w-7xl mx-auto w-full space-y-6 flex-1 page-transition">
-        
         <div class="bg-[#fcf3dc]/90 md:bg-[#fcf3dc] md:rounded shadow-md border-b md:border border-amber-200/40">
             <div class="bg-[#f4e6c3] md:bg-[#f3e3ba] px-4 py-2 flex justify-between items-center border-b border-amber-200/50">
                 <h2 class="text-[#8b6e4e] font-bold text-sm md:text-base flex items-center gap-2 select-none"><i class="fa-solid fa-folder-open text-xs"></i> Start</h2>
                 <i class="fa-solid fa-chevron-up text-xs text-[#8b6e4e]/70"></i>
             </div>
-            
             <div class="p-4 grid grid-cols-1 md:flex md:flex-wrap gap-4">
                 <div onclick="showPage('unterricht-page')" class="bg-[#eb7a34] text-white rounded shadow-md cursor-pointer hover:scale-[1.02] transition-all flex md:flex-col items-start p-3 md:p-0 md:h-44 md:w-44 border-t-4 border-black/10 relative">
                     <div class="hidden md:flex absolute top-1.5 right-1.5 gap-1 text-[7px] text-white/40"><i class="fa-solid fa-circle"></i><i class="fa-solid fa-circle"></i><i class="fa-solid fa-circle"></i></div>
@@ -117,9 +114,6 @@
                 <div class="bg-[#387a3e] text-white rounded shadow-md flex md:flex-col items-start p-3 md:p-0 md:h-44 md:w-44 border-t-4 border-black/10 relative">
                     <div class="bg-white text-[#387a3e] p-2 w-10 h-10 md:w-full md:h-24 flex items-center justify-center text-xl md:text-4xl shrink-0"><i class="fa-solid fa-calendar-days md:text-green-700"></i></div>
                     <div class="md:bg-white md:text-gray-700 md:w-full md:p-2 md:text-center md:border-t border-gray-200 text-xs flex-1 flex items-center justify-center font-bold">Kalender</div>
-                    <div class="hidden md:block absolute top-8 left-1.5 right-1.5 text-center bg-black/75 text-white rounded text-[8px] p-1 space-y-0.5 leading-none">
-                        <p>24.05 Pfingstsonntag</p><p>25.05 Pfingstmontag</p><p>04.06 Fronleichnam</p>
-                    </div>
                 </div>
                 <div class="bg-[#d32f2f] text-white rounded shadow-md flex md:flex-col items-center p-3 md:p-0 md:h-44 md:w-44 border-t-4 border-black/10 justify-center">
                     <div class="md:h-24 flex items-center justify-center text-xl md:text-4xl md:w-full md:bg-white md:text-red-600"><i class="fa-solid fa-shuffle"></i></div>
@@ -130,169 +124,125 @@
     </main>
 
     <main id="unterricht-page" class="bg-white flex-1 p-4 md:p-8 max-w-5xl mx-auto w-full hidden page-transition">
-        <div class="flex items-center gap-3 mb-4">
-            <i class="fa-solid fa-book-bookmark text-4xl text-gray-800"></i>
-            <h2 class="text-4xl font-normal text-gray-800 tracking-tight">mein Unterricht</h2>
-        </div>
-        
+        <div class="flex items-center gap-3 mb-4"><i class="fa-solid fa-book-bookmark text-4xl text-gray-800"></i><h2 class="text-4xl font-normal text-gray-800 tracking-tight">mein Unterricht</h2></div>
         <div class="flex gap-1 mb-5 text-xs font-semibold">
             <button class="bg-[#4a7cb5] text-white py-2 px-4 rounded-t flex items-center gap-1.5"><i class="fa-solid fa-calendar-days"></i> Einträge wochenweise</button>
             <button class="bg-[#e0a955] text-white py-2 px-4 rounded-t flex items-center gap-1.5"><i class="fa-regular fa-face-smile"></i> Kurzanleitungen</button>
         </div>
-
         <div class="flex border-b border-gray-200 mb-6 text-xs text-gray-600 font-medium">
             <button class="border-b-2 border-blue-500 text-gray-900 px-4 py-2 font-bold flex items-center gap-1.5 bg-gray-50"><i class="fa-solid fa-user-check text-[11px]"></i> Aktuelle Einträge</button>
-            <button class="px-4 py-2 hover:bg-gray-50 flex items-center gap-1.5 text-blue-600"><i class="fa-solid fa-book text-[11px]"></i> Kursmappen</button>
-            <button class="px-4 py-2 hover:bg-gray-50 flex items-center gap-1.5 text-blue-600"><i class="fa-solid fa-list-ul text-[11px]"></i> Anwesenheiten</button>
+            <button class="px-4 py-2 flex items-center gap-1.5 text-blue-600"><i class="fa-solid fa-book text-[11px]"></i> Kursmappen</button>
+            <button class="px-4 py-2 flex items-center gap-1.5 text-blue-600"><i class="fa-solid fa-list-ul text-[11px]"></i> Anwesenheiten</button>
         </div>
-
         <h3 class="text-3xl font-bold text-gray-800 mb-2">Aktuelle Einträge</h3>
-        
         <div class="flex flex-wrap gap-2 mb-6">
             <div class="border border-gray-300 rounded px-3 py-1.5 text-xs text-gray-700 flex items-center gap-2 font-medium shadow-sm"><i class="fa-solid fa-house"></i> unerledigte Hausaufgaben</div>
             <div class="bg-[#f0ad4e] text-white rounded px-3 py-1.5 text-xs flex items-center gap-2 font-bold shadow-sm"><i class="fa-solid fa-upload"></i> <span class="bg-white text-[#f0ad4e] px-1.5 py-0.2 rounded-full text-[10px]">1</span> offene Abgabe</div>
         </div>
-        
-        <div class="grid grid-cols-12 text-[10px] text-gray-400 font-bold uppercase tracking-wider border-b border-gray-200 pb-1 mb-3">
-            <div class="col-span-4">Name</div>
-            <div class="col-span-5">Thema / Datum / Inhalt / Hausaufgaben</div>
-            <div class="col-span-3 text-right">Weiteres</div>
-        </div>
-
+        <div class="grid grid-cols-12 text-[10px] text-gray-400 font-bold uppercase tracking-wider border-b border-gray-200 pb-1 mb-3"><div class="col-span-4">Name</div><div class="col-span-5">Thema / Datum / Inhalt</div><div class="col-span-3 text-right">Weiteres</div></div>
         <div class="grid grid-cols-12 items-start py-4 border-b border-gray-100">
             <div class="col-span-4 pr-2">
                 <span id="txt-ut-fach" class="font-bold text-2xl text-[#337ab7] block leading-tight hover:underline cursor-pointer">Arbeitslehre 09dr</span>
                 <div class="flex items-center gap-1 mt-2">
                     <button class="bg-[#337ab7] text-white text-[11px] px-2 py-1 rounded font-bold flex items-center gap-1">Pol <i class="fa-solid fa-caret-down text-[8px]"></i></button>
-                    <button class="border border-gray-300 text-gray-600 text-[11px] p-1 rounded hover:bg-gray-50"><i class="fa-solid fa-print"></i></button>
                 </div>
             </div>
             <div class="col-span-5 text-xs space-y-1">
                 <p id="txt-ut-thema" class="font-bold text-gray-900 text-sm">Präsentationen</p>
                 <p id="txt-ut-datum" class="text-[11px] text-gray-400">11.05.2026</p>
             </div>
-            <div class="col-span-3 text-right">
-                <button class="bg-[#337ab7] hover:bg-[#286090] text-white text-xs py-1.5 px-3 rounded font-medium flex items-center gap-1 ml-auto shadow-sm"><i class="fa-solid fa-user"></i> alle Einträge</button>
-            </div>
+            <div class="col-span-3 text-right"><button class="bg-[#337ab7] text-white text-xs py-1.5 px-3 rounded font-medium flex items-center gap-1 ml-auto shadow-sm"><i class="fa-solid fa-user"></i> alle Einträge</button></div>
         </div>
-
-        <button class="mt-8 bg-gray-100 hover:bg-gray-200 text-gray-600 font-bold text-xs py-2 px-5 rounded block mx-auto shadow-sm" onclick="showPage('start-page')">Zurück zur Übersicht</button>
+        <button class="mt-8 bg-gray-100 text-gray-600 font-bold text-xs py-2 px-5 rounded block mx-auto shadow-sm" onclick="showPage('start-page')">Zurück zur Übersicht</button>
     </main>
-
 
     <main id="vertretung-page" class="bg-white flex-1 p-4 md:p-8 max-w-7xl mx-auto w-full hidden page-transition">
         <h2 class="text-3xl font-normal text-gray-800 mb-4 tracking-tight">Mein Vertretungsplan</h2>
-        
         <div class="border border-[#428bca] rounded overflow-hidden shadow-sm">
             <div class="bg-[#428bca] text-white px-4 py-2 flex items-center justify-between text-xs font-semibold">
-                <div class="flex items-center gap-2">
-                    <span>Freitag, den 22.05.2026</span>
-                    <span class="bg-[#3276b1] px-1.5 py-0.5 rounded text-[10px] font-bold">heute</span>
-                    <span class="bg-[#3276b1] px-1.5 py-0.5 rounded text-[10px]">21. Woche</span>
-                </div>
+                <div class="flex items-center gap-2"><span>Freitag, den 22.05.2026</span><span class="bg-[#3276b1] px-1.5 py-0.5 rounded text-[10px] font-bold">heute</span></div>
             </div>
-            
             <div class="p-4 bg-white space-y-4">
-                <h3 class="text-xl font-normal text-gray-800">Vertretungen am 22.05.2026</h3>
-                
                 <div class="flex justify-end items-center gap-1.5 text-xs">
-                    <span class="text-gray-500">Suchen:</span>
-                    <input type="text" placeholder="..." class="border border-gray-300 rounded px-2 py-1 bg-white text-gray-800 w-44 focus:outline-none focus:border-blue-500 shadow-inner">
-                    <button class="border border-gray-300 text-gray-600 p-1 rounded bg-gray-50"><i class="fa-solid fa-copy"></i></button>
-                    <button class="border border-gray-300 text-gray-600 p-1 rounded bg-gray-50"><i class="fa-solid fa-table-cells"></i> <i class="fa-solid fa-caret-down text-[9px]"></i></button>
+                    <span class="text-gray-500">Suchen:</span><input type="text" placeholder="..." class="border border-gray-300 rounded px-2 py-1 text-gray-800 w-44">
                 </div>
-
                 <div class="overflow-x-auto border border-gray-200 rounded">
                     <table class="w-full text-left border-collapse text-xs">
                         <thead>
-                            <tr class="bg-gray-50 text-gray-600 border-b border-gray-200 font-bold text-[11px] select-none">
-                                <th class="p-2.5 border-r border-gray-200 text-center">Stunde <i class="fa-solid fa-sort text-[9px] opacity-40"></i></th>
-                                <th class="p-2.5 border-r border-gray-200">Klasse <i class="fa-solid fa-sort text-[9px] opacity-40"></i></th>
-                                <th class="p-2.5 border-r border-gray-200">Vertretung <i class="fa-solid fa-sort text-[9px] opacity-40"></i></th>
-                                <th class="p-2.5 border-r border-gray-200">Lehrkraft <i class="fa-solid fa-sort text-[9px] opacity-40"></i></th>
-                                <th class="p-2.5 border-r border-gray-200">Art <i class="fa-solid fa-sort text-[9px] opacity-40"></i></th>
-                                <th class="p-2.5 border-r border-gray-200">Fach <i class="fa-solid fa-sort text-[9px] opacity-40"></i></th>
-                                <th class="p-2.5 border-r border-gray-200">Fach_alt <i class="fa-solid fa-sort text-[9px] opacity-40"></i></th>
-                                <th class="p-2.5 border-r border-gray-200">Raum <i class="fa-solid fa-sort text-[9px] opacity-40"></i></th>
-                                <th class="p-2.5">Raum_alt <i class="fa-solid fa-sort text-[9px] opacity-40"></i></th>
+                            <tr class="bg-gray-50 text-gray-600 border-b border-gray-200 font-bold text-[11px]">
+                                <th class="p-2.5 border-r border-gray-200 text-center">Stunde</th><th class="p-2.5 border-r border-gray-200">Klasse</th><th class="p-2.5 border-r border-gray-200">Vertretung</th><th class="p-2.5 border-r border-gray-200">Lehrkraft</th><th class="p-2.5 border-r border-gray-200">Art</th><th class="p-2.5 border-r border-gray-200">Fach</th><th class="p-2.5 border-r border-gray-200">Fach_alt</th><th class="p-2.5 border-r border-gray-200">Raum</th><th class="p-2.5">Raum_alt</th>
                             </tr>
                         </thead>
                         <tbody class="text-gray-700 divide-y divide-gray-200">
-                            <tr class="hover:bg-gray-50/80">
-                                <td id="td-vp-stunde" class="p-2.5 border-r border-gray-200 font-normal text-center">1 - 2</td>
-                                <td id="td-vp-klasse" class="p-2.5 border-r border-gray-200">09aR, 09bR, 09dR</td>
-                                <td id="td-vp-vlehrer" class="p-2.5 border-r border-gray-200 font-medium">Lun</td>
-                                <td id="td-vp-lehrer" class="p-2.5 border-r border-gray-200 italic">Sco</td>
-                                <td class="p-2.5 border-r border-gray-200"><span id="td-vp-art" class="font-normal">Vertretung</span></td>
-                                <td id="td-vp-fach" class="p-2.5 border-r border-gray-200">Eth</td>
-                                <td class="p-2.5 border-r border-gray-200 bg-gray-50/50"></td>
-                                <td id="td-vp-raum" class="p-2.5 border-r border-gray-200">A6</td>
-                                <td class="p-2.5 bg-gray-50/50"></td>
+                            <tr>
+                                <td id="td-vp-stunde" class="p-2.5 border-r border-gray-200 text-center">1 - 2</td><td id="td-vp-klasse" class="p-2.5 border-r border-gray-200">09aR, 09bR, 09dR</td><td id="td-vp-vlehrer" class="p-2.5 border-r border-gray-200 font-medium">Lun</td><td id="td-vp-lehrer" class="p-2.5 border-r border-gray-200 italic">Sco</td><td class="p-2.5 border-r border-gray-200"><span id="td-vp-art">Vertretung</span></td><td id="td-vp-fach" class="p-2.5 border-r border-gray-200">Eth</td><td class="p-2.5 border-r border-gray-200 bg-gray-50/50"></td><td id="td-vp-raum" class="p-2.5 border-r border-gray-200">A6</td><td class="p-2.5 bg-gray-50/50"></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                
-                <div class="flex justify-between items-center text-[11px] text-gray-400 font-medium pt-1">
-                    <span>Zeige 1 bis 1 von 1 Zeile</span>
-                    <span id="txt-vp-update" class="italic">Letzte Aktualisierung: 22.05.2026 um 10:03:05 Uhr</span>
-                </div>
+                <div class="flex justify-between items-center text-[11px] text-gray-400 font-medium pt-1"><span>Zeige 1 bis 1 von 1 Zeile</span><span id="txt-vp-update" class="italic">Letzte Aktualisierung: Live</span></div>
             </div>
         </div>
-
-        <button class="mt-8 bg-gray-100 hover:bg-gray-200 text-gray-600 font-bold text-xs py-2 px-5 rounded block mx-auto shadow-sm" onclick="showPage('start-page')">Hauptmenü</button>
+        <button class="mt-8 bg-gray-100 text-gray-600 font-bold text-xs py-2 px-5 rounded block mx-auto shadow-sm" onclick="showPage('start-page')">Hauptmenü</button>
     </main>
 
-
     <main id="admin-page" class="bg-gray-900 text-white flex-1 p-4 md:p-8 max-w-4xl mx-auto w-full hidden page-transition">
-        <div class="flex items-center gap-2 mb-6 text-yellow-400 border-b border-gray-800 pb-3">
-            <i class="fa-solid fa-user-gear text-2xl"></i>
-            <h2 class="text-xl font-bold tracking-tight">Live Dashboard Konfiguration</h2>
-        </div>
-
+        <div class="flex items-center gap-2 mb-6 text-yellow-400 border-b border-gray-800 pb-3"><i class="fa-solid fa-user-gear text-2xl"></i><h2 class="text-xl font-bold tracking-tight">Geheimes Admin-Panel</h2></div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
             <div class="bg-gray-800 p-4 rounded border border-gray-700 space-y-3">
-                <h3 class="text-xs font-bold text-orange-400 border-b border-gray-700 pb-1 uppercase tracking-wider">Modul: Mein Unterricht</h3>
-                <div><label class="block text-gray-400 mb-1">Hausaufgaben Anzahl:</label><input type="number" id="inp-tasks-num" value="3" class="w-full bg-gray-700 border border-gray-600 rounded px-2.5 py-1.5 text-white"></div>
-                <div><label class="block text-gray-400 mb-1">Fachbezeichnung:</label><input type="text" id="inp-ut-fach" value="Arbeitslehre 09dr" class="w-full bg-gray-700 border border-gray-600 rounded px-2.5 py-1.5 text-white"></div>
-                <div><label class="block text-gray-400 mb-1">Aktuelles Thema:</label><input type="text" id="inp-ut-thema" value="Präsentationen" class="w-full bg-gray-700 border border-gray-600 rounded px-2.5 py-1.5 text-white"></div>
+                <h3 class="text-xs font-bold text-orange-400 border-b border-gray-700 pb-1 uppercase">Modul: Mein Unterricht</h3>
+                <div><label class="block text-gray-400 mb-1">Hausaufgaben:</label><input type="number" id="inp-tasks-num" value="3" class="w-full bg-gray-700 border border-gray-600 rounded px-2.5 py-1.5 text-white"></div>
+                <div><label class="block text-gray-400 mb-1">Fach:</label><input type="text" id="inp-ut-fach" value="Arbeitslehre 09dr" class="w-full bg-gray-700 border border-gray-600 rounded px-2.5 py-1.5 text-white"></div>
+                <div><label class="block text-gray-400 mb-1">Thema:</label><input type="text" id="inp-ut-thema" value="Präsentationen" class="w-full bg-gray-700 border border-gray-600 rounded px-2.5 py-1.5 text-white"></div>
             </div>
-
             <div class="bg-gray-800 p-4 rounded border border-gray-700 space-y-3">
-                <h3 class="text-xs font-bold text-green-400 border-b border-gray-700 pb-1 uppercase tracking-wider">Modul: Vertretungsplan</h3>
+                <h3 class="text-xs font-bold text-green-400 border-b border-gray-700 pb-1 uppercase">Modul: Vertretungsplan</h3>
                 <div class="grid grid-cols-2 gap-2">
                     <div><label class="block text-gray-400 mb-1">Stunde:</label><input type="text" id="inp-vp-stunde" value="1 - 2" class="w-full bg-gray-700 border border-gray-600 rounded px-2.5 py-1.5 text-white"></div>
                     <div><label class="block text-gray-400 mb-1">Raum:</label><input type="text" id="inp-vp-raum" value="A6" class="w-full bg-gray-700 border border-gray-600 rounded px-2.5 py-1.5 text-white"></div>
-                    
                     <div class="col-span-2">
-                        <label class="block text-emerald-400 font-bold mb-1">Art der Vertretung (Status-Typ):</label>
+                        <label class="block text-emerald-400 font-bold mb-1">Art der Vertretung:</label>
                         <select id="inp-vp-art" class="w-full bg-gray-700 border border-emerald-500 rounded px-2.5 py-1.5 text-white font-semibold">
-                            <option value="Vertretung">Vertretung</option>
-                            <option value="Entfall">Entfall</option>
-                            <option value="Raumvertretung">Raumvertretung</option>
-                            <option value="Freisetzung">Freisetzung</option>
-                            <option value="Selbstst. Arbeiten">Selbstständiges Arbeiten</option>
+                            <option value="Vertretung">Vertretung</option><option value="Entfall">Entfall</option><option value="Raumvertretung">Raumvertretung</option><option value="Freisetzung">Freisetzung</option><option value="Selbstst. Arbeiten">Selbstständiges Arbeiten</option>
                         </select>
                     </div>
-
                     <div class="col-span-2"><label class="block text-gray-400 mb-1">Klassen:</label><input type="text" id="inp-vp-klasse" value="09aR, 09bR, 09dR" class="w-full bg-gray-700 border border-gray-600 rounded px-2.5 py-1.5 text-white"></div>
-                    <div><label class="block text-gray-400 mb-1">Vertretungslehrer:</label><input type="text" id="inp-vp-vlehrer" value="Lun" class="w-full bg-gray-700 border border-gray-600 rounded px-2.5 py-1.5 text-white"></div>
-                    <div><label class="block text-gray-400 mb-1">Stammlehrer (Kürzel):</label><input type="text" id="inp-vp-lehrer" value="Sco" class="w-full bg-gray-700 border border-gray-600 rounded px-2.5 py-1.5 text-white"></div>
-                    <div class="col-span-2"><label class="block text-gray-400 mb-1">Fach Kürzel:</label><input type="text" id="inp-vp-fach" value="Eth" class="w-full bg-gray-700 border border-gray-600 rounded px-2.5 py-1.5 text-white"></div>
+                    <div><label class="block text-gray-400 mb-1">Vertretung:</label><input type="text" id="inp-vp-vlehrer" value="Lun" class="w-full bg-gray-700 border border-gray-600 rounded px-2.5 py-1.5 text-white"></div>
+                    <div><label class="block text-gray-400 mb-1">Lehrer:</label><input type="text" id="inp-vp-lehrer" value="Sco" class="w-full bg-gray-700 border border-gray-600 rounded px-2.5 py-1.5 text-white"></div>
+                    <div class="col-span-2"><label class="block text-gray-400 mb-1">Fach:</label><input type="text" id="inp-vp-fach" value="Eth" class="w-full bg-gray-700 border border-gray-600 rounded px-2.5 py-1.5 text-white"></div>
                 </div>
             </div>
         </div>
-
         <div class="pt-6 max-w-sm mx-auto space-y-2">
-            <button onclick="saveAdminChanges()" class="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-extrabold py-2.5 rounded shadow text-sm transition-transform active:scale-95 cursor-pointer">Änderungen anwenden & pushen</button>
-            <button onclick="showPage('start-page')" class="w-full bg-gray-800 text-gray-300 py-2 rounded text-center block transition-colors hover:bg-gray-700">Abbrechen</button>
+            <button onclick="saveAdminChanges()" class="w-full bg-yellow-500 text-gray-900 font-extrabold py-2.5 rounded text-sm shadow cursor-pointer">Änderungen pushen</button>
+            <button onclick="showPage('start-page')" class="w-full bg-gray-800 text-gray-300 py-2 rounded text-center block">Abbrechen</button>
         </div>
     </main>
 
     <div class="w-32 h-1 bg-black/40 mx-auto rounded-full mt-6 md:hidden select-none"></div>
 
-
     <script>
+        // SECRET 1: Desktop Tastatur Shortcut (Drücke "A" und "D" gleichzeitig auf der Startseite)
+        let keysPressed = {};
+        document.addEventListener('keydown', (e) => {
+            keysPressed[e.key.toLowerCase()] = true;
+            if (keysPressed['a'] && keysPressed['d']) {
+                showPage('admin-page');
+            }
+        });
+        document.addEventListener('keyup', (e) => {
+            delete keysPressed[e.key.toLowerCase()];
+        });
+
+        // SECRET 2: Mobile Long-Press (Halte den Schulnamen im Handy-Header 2 Sekunden gedrückt)
+        const mobileTrigger = document.getElementById('mobile-secret-trigger');
+        let pressTimer;
+        
+        mobileTrigger.addEventListener('touchstart', () => {
+            pressTimer = setTimeout(() => { showPage('admin-page'); }, 2000);
+        });
+        mobileTrigger.addEventListener('touchend', () => { clearTimeout(pressTimer); });
+
         function showPage(pageId) {
             const target = document.getElementById(pageId);
             if(!target) return;
@@ -305,7 +255,6 @@
             });
 
             setTimeout(() => {
-                // Dynamische Farbanpassungen für Seitenhintergründe
                 if (pageId === 'start-page') {
                     document.body.style.backgroundColor = ""; 
                     document.getElementById('mobile-header').classList.replace('hidden', 'flex');
@@ -314,11 +263,8 @@
                 } else {
                     document.body.style.backgroundColor = "#ffffff";
                 }
-
                 target.classList.remove('hidden');
-                setTimeout(() => {
-                    target.classList.remove('opacity-0');
-                }, 20);
+                setTimeout(() => { target.classList.remove('opacity-0'); }, 20);
             }, 110);
         }
 
@@ -326,7 +272,6 @@
             const numTasks = document.getElementById('inp-tasks-num').value;
             const utFach = document.getElementById('inp-ut-fach').value;
             const utThema = document.getElementById('inp-ut-thema').value;
-            
             const vpStunde = document.getElementById('inp-vp-stunde').value;
             const vpKlasse = document.getElementById('inp-vp-klasse').value;
             const vpVLehrer = document.getElementById('inp-vp-vlehrer').value;
@@ -335,12 +280,10 @@
             const vpRaum = document.getElementById('inp-vp-raum').value;
             const vpArt = document.getElementById('inp-vp-art').value;
 
-            // Update Startseite Kacheln (Desktop Text-Layer)
             document.getElementById('badge-tasks').innerText = numTasks;
             document.getElementById('txt-start-tasks-desktop').innerText = `${numTasks} Hausaufgaben unerledigt`;
             document.getElementById('txt-start-vp-desktop').innerHTML = `22.05. ${vpStunde}. <span class="font-bold">${vpArt}</span> in ${vpRaum}`;
 
-            // Sync Tabellenspalten (Vertretungsplan)
             document.getElementById('td-vp-stunde').innerText = vpStunde;
             document.getElementById('td-vp-klasse').innerText = vpKlasse;
             document.getElementById('td-vp-vlehrer').innerText = vpVLehrer;
@@ -348,7 +291,6 @@
             document.getElementById('td-vp-fach').innerText = vpFach;
             document.getElementById('td-vp-raum').innerText = vpRaum;
             
-            // Text-Farbe bei Entfall in Tabelle anpassen
             const txtArt = document.getElementById('td-vp-art');
             txtArt.innerText = vpArt;
             if(vpArt === 'Entfall') {
@@ -357,18 +299,14 @@
                 txtArt.className = "font-normal text-gray-700";
             }
 
-            // Sync "mein Unterricht" Details
             document.getElementById('txt-ut-fach').innerText = utFach;
             document.getElementById('txt-ut-thema').innerText = utThema;
 
-            // Live-Uhrzeit Zeitstempel setzen
             const jetzt = new Date();
-            const datumStr = jetzt.toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' });
-            const zeitStr = jetzt.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-            document.getElementById('txt-vp-update').innerText = `Letzte Aktualisierung: ${datumStr} um ${zeitStr} Uhr`;
-
+            document.getElementById('txt-vp-update').innerText = `Letzte Aktualisierung: ${jetzt.toLocaleDateString('de-DE')} um ${jetzt.toLocaleTimeString('de-DE')} Uhr`;
             showPage('start-page');
         }
     </script>
 </body>
 </html>
+
