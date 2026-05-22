@@ -27,7 +27,7 @@
 <body class="w-full mx-auto min-h-screen flex flex-col bg-[#e5d3be]">
 
     <header id="mobile-header" class="bg-[#4fbcd4] text-white px-4 py-3 flex md:hidden justify-between items-center sticky top-0 z-50 shadow-md">
-        <h1 id="mobile-secret-trigger" class="text-xl font-normal tracking-wide cursor-pointer select-none">Kurt-Schumacher-Schule</h1>
+        <h1 class="text-xl font-normal tracking-wide cursor-pointer" onclick="showPage('start-page')">Kurt-Schumacher-Schule</h1>
         <div class="flex items-center gap-4">
             <button class="border border-white/50 rounded-md px-2.5 py-1"><i class="fa-solid fa-bars text-xl"></i></button>
         </div>
@@ -187,7 +187,7 @@
     </main>
 
     <main id="admin-page" class="bg-gray-900 text-white flex-1 p-4 md:p-8 max-w-4xl mx-auto w-full hidden page-transition">
-        <div class="flex items-center gap-2 mb-6 text-yellow-400 border-b border-gray-800 pb-3"><i class="fa-solid fa-user-gear text-2xl"></i><h2 class="text-xl font-bold tracking-tight">Geheimes Admin-Panel</h2></div>
+        <div class="flex items-center gap-2 mb-6 text-yellow-400 border-b border-gray-800 pb-3"><i class="fa-solid fa-user-gear text-2xl"></i><h2 class="text-xl font-bold tracking-tight">Dashboard Konfiguration</h2></div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
             <div class="bg-gray-800 p-4 rounded border border-gray-700 space-y-3">
                 <h3 class="text-xs font-bold text-orange-400 border-b border-gray-700 pb-1 uppercase">Modul: Mein Unterricht</h3>
@@ -214,35 +214,19 @@
             </div>
         </div>
         <div class="pt-6 max-w-sm mx-auto space-y-2">
-            <button onclick="saveAdminChanges()" class="w-full bg-yellow-500 text-gray-900 font-extrabold py-2.5 rounded text-sm shadow cursor-pointer">Änderungen pushen</button>
+            <button onclick="saveAdminChanges()" class="w-full bg-yellow-500 text-gray-900 font-extrabold py-2.5 rounded text-sm shadow cursor-pointer">Änderungen übernehmen</button>
             <button onclick="showPage('start-page')" class="w-full bg-gray-800 text-gray-300 py-2 rounded text-center block">Abbrechen</button>
         </div>
     </main>
 
-    <div class="w-32 h-1 bg-black/40 mx-auto rounded-full mt-6 md:hidden select-none"></div>
+    <footer class="w-full max-w-7xl mx-auto px-4 mt-auto pt-8 pb-4 text-[11px] text-gray-500/60 flex justify-between items-center select-none">
+        <div>&copy; 2026 Schulportal Hessen. Alle Rechte vorbehalten.</div>
+        <button onclick="showPage('admin-page')" class="hover:text-gray-700 cursor-pointer transition-colors bg-transparent border-none p-0 text-[10px] opacity-30">System-Konfiguration (v4.8)</button>
+    </footer>
+
+    <div class="w-32 h-1 bg-black/40 mx-auto rounded-full mb-2 md:hidden select-none"></div>
 
     <script>
-        // SECRET 1: Desktop Tastatur Shortcut (Drücke "A" und "D" gleichzeitig auf der Startseite)
-        let keysPressed = {};
-        document.addEventListener('keydown', (e) => {
-            keysPressed[e.key.toLowerCase()] = true;
-            if (keysPressed['a'] && keysPressed['d']) {
-                showPage('admin-page');
-            }
-        });
-        document.addEventListener('keyup', (e) => {
-            delete keysPressed[e.key.toLowerCase()];
-        });
-
-        // SECRET 2: Mobile Long-Press (Halte den Schulnamen im Handy-Header 2 Sekunden gedrückt)
-        const mobileTrigger = document.getElementById('mobile-secret-trigger');
-        let pressTimer;
-        
-        mobileTrigger.addEventListener('touchstart', () => {
-            pressTimer = setTimeout(() => { showPage('admin-page'); }, 2000);
-        });
-        mobileTrigger.addEventListener('touchend', () => { clearTimeout(pressTimer); });
-
         function showPage(pageId) {
             const target = document.getElementById(pageId);
             if(!target) return;
@@ -309,4 +293,3 @@
     </script>
 </body>
 </html>
-
