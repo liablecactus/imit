@@ -199,10 +199,6 @@
                 document.body.className = "max-w-md mx-auto min-h-screen shadow-2xl flex flex-col pb-8 bg-white";
                 document.getElementById('mobile-header').classList.add('hidden');
                 document.getElementById('desktop-header').classList.replace('hidden', 'flex');
-            } else if (pageId === 'admin-page') {
-                document.body.className = "max-w-md mx-auto min-h-screen shadow-2xl flex flex-col pb-8 bg-gray-900";
-                document.getElementById('mobile-header').classList.replace('hidden', 'flex');
-                document.getElementById('desktop-header').classList.add('hidden');
             } else {
                 document.body.className = "max-w-md mx-auto min-h-screen shadow-2xl flex flex-col pb-8 bg-white";
                 document.getElementById('mobile-header').classList.replace('hidden', 'flex');
@@ -214,7 +210,6 @@
         }
 
         function saveAdminChanges() {
-            // Werte aus den Inputs auslesen
             const numTasks = document.getElementById('inp-tasks-num').value;
             const utFach = document.getElementById('inp-ut-fach').value;
             const utThema = document.getElementById('inp-ut-thema').value;
@@ -224,12 +219,10 @@
             const vpLehrer = document.getElementById('inp-vp-lehrer').value;
             const vpRaum = document.getElementById('inp-vp-raum').value;
 
-            // Startseite updaten
             document.getElementById('badge-tasks').innerText = numTasks;
             document.getElementById('txt-start-tasks').innerHTML = `${numTasks} Hausaufgaben`;
             document.getElementById('txt-start-vp').innerHTML = `22.05. ${vpStunde}. <span class="font-bold">${vpKlasse.split(',')[0]}... in ${vpRaum}</span>`;
 
-            // Detailseiten updaten
             document.getElementById('txt-ut-fach').innerText = utFach;
             document.getElementById('txt-ut-thema').innerText = utThema;
             
@@ -238,7 +231,6 @@
             document.getElementById('td-vp-lehrer').innerText = vpLehrer;
             document.getElementById('td-vp-raum').innerText = vpRaum;
 
-            // Zurück zur Startseite
             showPage('start-page');
         }
     </script>
