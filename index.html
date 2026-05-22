@@ -9,136 +9,167 @@
     <style>
         body {
             background-color: #e5d3be;
-            background-image: radial-gradient(rgba(0,0,0,0.06) 1.2px, transparent 0);
+            background-image: radial-gradient(rgba(0,0,0,0.05) 1.2px, transparent 0);
             background-size: 20px 20px;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
             -webkit-tap-highlight-color: transparent;
+        }
+        /* Desktop Holz-Hintergrund Textur Imitation aus Screenshot 5 */
+        @media (min-width: 768px) {
+            body {
+                background: #decbb4 url('https://www.transparenttextures.com/patterns/wood-pattern.png');
+            }
         }
         .page-transition {
             transition: opacity 0.15s ease-in-out, transform 0.15s ease-in-out;
         }
     </style>
 </head>
-<body class="w-full max-w-md md:max-w-5xl mx-auto min-h-screen shadow-2xl flex flex-col pb-6 bg-[#e5d3be] relative selection:bg-cyan-200 transition-all">
+<body class="w-full mx-auto min-h-screen flex flex-col pb-6 bg-[#e5d3be] relative selection:bg-cyan-200">
 
-    <header id="mobile-header" class="bg-[#4fbcd4] text-white px-4 py-3.5 flex justify-between items-center sticky top-0 z-50 shadow-md">
-        <h1 class="text-xl font-normal tracking-wide cursor-pointer active:opacity-70 select-none" onclick="showPage('start-page')">Kurt-Schumacher-Schule</h1>
+    <header id="mobile-header" class="bg-[#4fbcd4] text-white px-4 py-3.5 flex md:hidden justify-between items-center sticky top-0 z-50 shadow-md">
+        <h1 class="text-xl font-normal tracking-wide cursor-pointer select-none" onclick="showPage('start-page')">Kurt-Schumacher-Schule</h1>
         <div class="flex items-center gap-4">
-            <button onclick="showPage('admin-page')" class="text-white/80 hover:text-white active:scale-110 transition-transform p-1">
-                <i class="fa-solid fa-gear text-xl"></i>
-            </button>
-            <button class="border border-white/50 rounded-md px-2.5 py-1 active:bg-white/20">
-                <i class="fa-solid fa-bars text-xl"></i>
-            </button>
+            <button onclick="showPage('admin-page')" class="text-white/80 hover:text-white p-1"><i class="fa-solid fa-gear text-xl"></i></button>
+            <button class="border border-white/50 rounded-md px-2.5 py-1"><i class="fa-solid fa-bars text-xl"></i></button>
         </div>
     </header>
 
-    <header id="desktop-header" class="bg-[#00bcd4] text-white px-6 py-3 hidden justify-between items-center text-xs font-medium sticky top-0 z-50 shadow-sm">
-        <span class="text-sm font-semibold tracking-wide cursor-pointer active:opacity-70" onclick="showPage('start-page')">Kurt-Schumacher-Schule</span>
-        <div class="flex items-center gap-5">
-            <button onclick="showPage('admin-page')" class="flex items-center gap-1 hover:underline opacity-90"><i class="fa-solid fa-gear"></i> Admin</button>
-            <button onclick="showPage('start-page')" class="flex items-center gap-1 hover:underline opacity-90"><i class="fa-solid fa-house"></i> Start</button>
-            <button class="flex items-center gap-1 hover:underline opacity-90"><i class="fa-solid fa-th-large"></i> Apps <i class="fa-solid fa-caret-down text-[8px]"></i></button>
-            <button class="flex items-center gap-1 hover:underline opacity-90"><i class="fa-solid fa-user"></i> Tun, Bili (09dr) <i class="fa-solid fa-caret-down text-[8px]"></i></button>
-            <button class="flex items-center gap-1 hover:underline opacity-90"><i class="fa-solid fa-power-off"></i> Logout</button>
+    <header id="desktop-header" class="hidden md:block sticky top-0 z-50 shadow-md">
+        <div class="bg-[#00bcd4] text-white px-8 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <div class="bg-white/10 p-1.5 rounded text-xl font-bold tracking-tight">Schulportal<span class="text-xs font-light vertical-super align-top ml-0.5">HESSEN</span></div>
+                <div class="text-sm font-light opacity-90 border-l border-white/30 pl-4">
+                    <span class="font-normal block text-base">Kurt-Schumacher-Schule <span class="text-xs opacity-70">Karben</span></span>
+                    <span class="text-[10px] opacity-60">"Schulportal Hessen - Pädagogische Organisation"</span>
+                </div>
+            </div>
+            <button onclick="showPage('admin-page')" class="bg-black/20 hover:bg-black/30 text-white font-bold py-1 px-3 rounded text-xs flex items-center gap-1.5 transition-all"><i class="fa-solid fa-gear"></i> Live-Admin</button>
+        </div>
+        <div class="bg-[#00a2b9] text-white px-8 py-2 flex justify-between items-center text-xs font-medium">
+            <div class="flex items-center gap-6">
+                <button onclick="showPage('start-page')" class="flex items-center gap-1.5 hover:opacity-80"><i class="fa-solid fa-house text-[11px]"></i> Start</button>
+                <button class="flex items-center gap-1.5 hover:opacity-80"><i class="fa-solid fa-th-large text-[11px]"></i> Apps <i class="fa-solid fa-caret-down text-[8px]"></i></button>
+            </div>
+            <div class="flex items-center gap-6 opacity-90">
+                <span class="flex items-center gap-1"><i class="fa-solid fa-user text-[11px]"></i> Tun, Bili (09dr) <i class="fa-solid fa-caret-down text-[8px]"></i></span>
+                <span class="flex items-center gap-1 cursor-pointer hover:underline"><i class="fa-solid fa-circle-question"></i> Support <i class="fa-solid fa-caret-down text-[8px]"></i></span>
+                <button class="flex items-center gap-1 hover:underline"><i class="fa-solid fa-power-off text-[11px]"></i> Logout</button>
+            </div>
         </div>
     </header>
 
-    <main id="start-page" class="p-3 md:p-6 grid grid-cols-1 md:grid-cols-2 gap-4 flex-1 page-transition opacity-100 scale-100 items-start">
+
+    <main id="start-page" class="p-3 md:p-8 max-w-7xl mx-auto w-full space-y-6 flex-1 page-transition opacity-100 scale-100">
         
-        <div class="bg-[#fcf3dc] rounded-md p-3.5 shadow-md border border-amber-200/40 space-y-3 md:col-span-2">
-            <h2 class="text-[#8b6e4e] font-bold text-base flex items-center gap-2 select-none"><i class="fa-solid fa-newspaper text-sm"></i> Start</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-                <div class="bg-[#eb7a34] text-white p-3 rounded-md shadow-sm cursor-pointer hover:brightness-105 active:scale-[0.99] transition-all flex items-start gap-3" onclick="showPage('unterricht-page')">
-                    <div class="bg-white text-[#eb7a34] rounded-md p-2 w-10 h-10 flex items-center justify-center text-xl shrink-0">
-                        <i class="fa-solid fa-user-graduation"></i>
+        <div class="bg-[#fcf3dc]/90 md:bg-[#fcf3dc] md:rounded-t-md shadow-md border-b md:border border-amber-200/40">
+            <div class="bg-[#f4e6c3] md:bg-[#f3e3ba] px-4 py-2 flex justify-between items-center border-b border-amber-200/50">
+                <h2 class="text-[#8b6e4e] font-bold text-sm md:text-base flex items-center gap-2 select-none"><i class="fa-solid fa-folder-open text-xs md:text-sm"></i> Start</h2>
+                <i class="fa-solid fa-chevron-up text-xs text-[#8b6e4e]/70 hidden md:block"></i>
+            </div>
+            
+            <div class="p-3 md:p-6 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                
+                <div onclick="showPage('unterricht-page')" class="bg-[#eb7a34] text-white rounded-md md:rounded shadow-md cursor-pointer hover:scale-[1.02] active:scale-[0.99] transition-all flex md:flex-col items-start p-3 md:p-0 md:h-44 md:w-44 border-t-4 border-red-500/30 relative">
+                    <div class="hidden md:flex absolute top-1.5 right-1.5 gap-1 text-[8px] text-white/50"><i class="fa-solid fa-circle"></i><i class="fa-solid fa-circle"></i><i class="fa-solid fa-circle"></i></div>
+                    
+                    <div class="bg-white text-[#eb7a34] rounded-md md:rounded-none p-2 w-10 h-10 md:w-full md:h-24 flex items-center justify-center text-xl md:text-4xl shrink-0 md:bg-white md:shadow-inner">
+                        <i class="fa-solid fa-address-book md:text-orange-500"></i>
                     </div>
-                    <div class="flex-1 min-w-0">
-                        <div class="flex items-center gap-2">
-                            <span class="font-bold text-lg leading-tight">mein Unterricht</span>
-                            <span id="badge-tasks" class="bg-[#566e7a] text-white text-[11px] font-bold px-2 py-0.5 rounded-full">3</span>
+                    <div class="flex-1 md:w-full md:bg-white md:text-gray-800 md:p-2 md:text-center md:border-t border-gray-200 min-w-0 ml-3 md:ml-0 flex flex-col justify-center">
+                        <div class="flex items-center gap-2 md:justify-center">
+                            <span class="font-bold text-base md:text-xs tracking-tight md:text-gray-700">mein Unterricht</span>
+                            <span id="badge-tasks" class="bg-[#d9534f] text-white text-[10px] font-bold px-1.5 py-0.2 rounded-full">3</span>
                         </div>
-                        <p class="text-xs text-orange-100 mt-0.5 truncate"><span id="txt-start-tasks" class="font-bold">3 Hausaufgaben</span> unerledigt</p>
+                        <p class="text-xs md:text-[10px] text-orange-100 md:text-gray-400 mt-0.5 truncate md:hidden"><span id="txt-start-tasks" class="font-bold">3 Hausaufgaben</span> unerledigt</p>
                     </div>
+                    <div class="hidden md:block absolute top-12 left-2 right-2 text-center bg-black/60 text-white rounded text-[10px] font-medium py-0.5" id="txt-start-tasks-desktop">3 Hausaufgaben unerledigt</div>
                 </div>
-                <div class="bg-[#4b9355] text-white p-3 rounded-md shadow-sm cursor-pointer hover:brightness-105 active:scale-[0.99] transition-all flex items-start gap-3" onclick="showPage('vertretung-page')">
-                    <div class="bg-white text-[#4b9355] rounded-md p-2 w-10 h-10 flex items-center justify-center text-xl shrink-0">
-                        <i class="fa-solid fa-book-open"></i>
+
+                <div onclick="showPage('vertretung-page')" class="bg-[#4b9355] text-white rounded-md md:rounded shadow-md cursor-pointer hover:scale-[1.02] active:scale-[0.99] transition-all flex md:flex-col items-start p-3 md:p-0 md:h-44 md:w-44 border-t-4 border-emerald-600/30 relative">
+                    <div class="hidden md:flex absolute top-1.5 right-1.5 gap-1 text-[8px] text-white/50"><i class="fa-solid fa-circle"></i><i class="fa-solid fa-circle"></i><i class="fa-solid fa-circle"></i></div>
+                    
+                    <div class="bg-white text-[#4b9355] rounded-md md:rounded-none p-2 w-10 h-10 md:w-full md:h-24 flex items-center justify-center text-xl md:text-4xl shrink-0 md:bg-white">
+                        <i class="fa-solid fa-book-open md:text-emerald-600"></i>
                     </div>
-                    <div class="flex-1 min-w-0">
-                        <span class="font-bold text-lg leading-tight">Vertretungsplan</span>
-                        <p id="txt-start-vp" class="text-xs text-green-100 mt-0.5 truncate">22.05. 1 - 2. <span id="vp-badge-type" class="font-bold">Vertretung</span> <span class="font-bold">in A6</span></p>
+                    <div class="flex-1 md:w-full md:bg-white md:text-gray-800 md:p-2 md:text-center md:border-t border-gray-200 min-w-0 ml-3 md:ml-0 flex flex-col justify-center">
+                        <span class="font-bold text-base md:text-xs tracking-tight md:text-gray-700">Vertretungsplan</span>
+                        <p id="txt-start-vp" class="text-xs text-green-100 mt-0.5 truncate md:hidden">22.05. 1 - 2. <span class="font-bold">09aR... in A6</span></p>
                     </div>
+                    <div class="hidden md:block absolute top-12 left-2 right-2 text-center bg-black/60 text-white rounded text-[9px] font-medium py-0.5 tracking-tighter" id="txt-start-vp-desktop">22.05. 1 - 2. <span id="vp-badge-type-desktop" class="font-bold">Vertretung</span> in A6</div>
                 </div>
-                <div class="bg-[#72b7cc] text-white p-3 rounded-md shadow-sm cursor-pointer hover:brightness-105 active:scale-[0.99] transition-all flex items-start gap-3">
-                    <div class="bg-white text-[#72b7cc] rounded-md p-2 w-10 h-10 flex items-center justify-center text-xl shrink-0">
-                        <i class="fa-solid fa-users"></i>
+
+                <div class="bg-[#72b7cc] text-white rounded-md md:rounded shadow-md cursor-pointer hover:scale-[1.02] transition-all flex md:flex-col items-start p-3 md:p-0 md:h-44 md:w-44 border-t-4 border-cyan-600/30 relative">
+                    <div class="hidden md:flex absolute top-1.5 right-1.5 gap-1 text-[8px] text-white/50"><i class="fa-solid fa-circle"></i><i class="fa-solid fa-circle"></i><i class="fa-solid fa-circle"></i></div>
+                    
+                    <div class="bg-white text-[#72b7cc] rounded-md md:rounded-none p-2 w-10 h-10 md:w-full md:h-24 flex items-center justify-center text-xl md:text-4xl shrink-0 md:bg-white">
+                        <i class="fa-solid fa-users md:text-cyan-500"></i>
                     </div>
-                    <div class="flex-1 min-w-0">
-                        <div class="flex items-center gap-2">
-                            <span class="font-bold text-lg leading-tight">Lerngruppen</span>
-                            <span class="bg-[#566e7a] text-white text-[11px] font-bold px-2 py-0.5 rounded-full">1</span>
+                    <div class="flex-1 md:w-full md:bg-white md:text-gray-800 md:p-2 md:text-center md:border-t border-gray-200 min-w-0 ml-3 md:ml-0 flex flex-col justify-center">
+                        <div class="flex items-center gap-2 md:justify-center">
+                            <span class="font-bold text-base md:text-xs tracking-tight md:text-gray-700">Lerngruppen</span>
+                            <span class="bg-[#d9534f] text-white text-[10px] font-bold px-1.5 py-0.2 rounded-full">1</span>
                         </div>
-                        <p class="text-xs text-sky-100 mt-0.5 truncate">27.05.2026 Deutsch 09dr</p>
+                    </div>
+                    <div class="hidden md:block absolute top-12 left-2 right-2 text-center bg-black/60 text-white rounded text-[9px] font-medium py-0.5">27.05.2026 Deutsch 09dr</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-[#4a7cb5]/90 md:bg-[#4a7cb5] md:rounded-t-md shadow-md">
+            <div class="bg-[#3e6fa3] px-4 py-2 flex justify-between items-center border-b border-blue-400/20 text-white">
+                <h2 class="font-bold text-sm md:text-base select-none">Allgemein</h2>
+                <i class="fa-solid fa-chevron-up text-xs hidden md:block"></i>
+            </div>
+            <div class="p-3 md:p-6 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                <div class="bg-[#387a3e] text-white rounded shadow-md flex md:flex-col items-start p-3 md:p-0 md:h-44 md:w-44 border-t-4 border-green-700/30 relative">
+                    <div class="bg-white text-[#387a3e] rounded p-2 w-10 h-10 md:w-full md:h-24 flex items-center justify-center text-xl md:text-4xl shrink-0 md:bg-white">
+                        <i class="fa-solid fa-calendar-days md:text-green-700"></i>
+                    </div>
+                    <div class="flex-1 md:w-full md:bg-white md:text-gray-800 md:p-2 md:text-center md:border-t border-gray-200 text-xs flex flex-col justify-center ml-3 md:ml-0">
+                        <span class="font-bold text-base md:text-xs tracking-tight md:text-gray-700 block md:mb-1">Kalender</span>
+                        <div class="text-[10px] space-y-0.5 leading-tight md:hidden">
+                            <p>24.05. <span class="font-bold text-emerald-800">Pfingstsonntag</span></p>
+                            <p>25.05. <span class="font-bold text-emerald-800">Pfingstmontag</span></p>
+                        </div>
+                    </div>
+                    <div class="hidden md:block absolute top-8 left-1.5 right-1.5 text-center bg-black/75 text-white rounded text-[8px] p-1 space-y-0.5 leading-none">
+                        <p>24.05 Pfingstsonntag</p>
+                        <p>25.05 Pfingstmontag</p>
+                        <p>04.06 Fronleichnam</p>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="bg-[#4a7cb5] rounded-md p-4 shadow-md space-y-3">
-            <h2 class="text-white font-bold text-base select-none">Allgemein</h2>
-            <div class="bg-[#387a3e] text-white p-3 rounded-md shadow-sm flex items-start gap-3">
-                <div class="bg-white text-[#387a3e] rounded-md p-2 w-10 h-10 flex items-center justify-center text-xl shrink-0"><i class="fa-solid fa-calendar-days"></i></div>
-                <div class="flex-1 text-xs text-green-100 space-y-0.5 pt-0.5">
-                    <span class="font-bold text-lg block text-white leading-none mb-1">Kalender</span>
-                    <p>24.05. <span class="font-bold text-white">Pfingstsonntag</span></p>
-                    <p>25.05. <span class="font-bold text-white">Pfingstmontag</span></p>
-                </div>
-            </div>
-            <div class="bg-[#d32f2f] text-white p-3 rounded-md shadow-sm cursor-pointer flex items-center gap-3.5"><i class="fa-solid fa-shuffle text-xl w-8 text-center"></i><span class="font-medium text-sm">Schulbildungsnetz Wetteraukreis</span></div>
-        </div>
-
-        <div class="bg-[#4a7cb5] rounded-md p-4 shadow-md space-y-3">
-            <h2 class="text-white font-bold text-base select-none">Organisation</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-                <div class="bg-[#000051] text-white p-3 rounded-md shadow-sm cursor-pointer flex items-center gap-3"><i class="fa-solid fa-envelope-open-text text-lg"></i><span class="font-bold text-base">Nachrichten</span></div>
-                <div class="bg-[#000051] text-white p-3 rounded-md shadow-sm cursor-pointer flex items-center gap-3"><i class="fa-solid fa-video text-lg"></i><span class="font-bold text-base">Videokonferenz</span></div>
-            </div>
-        </div>
-
-        <div class="bg-[#4a7cb5] rounded-md p-4 shadow-md space-y-3 md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="space-y-3">
-                <h2 class="text-white font-bold text-base select-none">Unterricht</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-                    <div class="bg-[#5d6f3e] text-white p-3 rounded-md shadow-sm cursor-pointer flex items-center gap-3"><i class="fa-solid fa-diagram-project"></i><span class="font-bold text-sm">SchulMahara</span></div>
-                    <div class="bg-[#f59e0b] text-white p-3 rounded-md shadow-sm cursor-pointer flex items-center gap-3"><i class="fa-solid fa-bars"></i><span class="font-bold text-sm">SchulMoodle</span></div>
-                </div>
-            </div>
-            <div class="space-y-3">
-                <h2 class="text-white font-bold text-base select-none">Sonstiges</h2>
-                <div class="bg-[#4dd0e1] text-white p-3 rounded-md shadow-sm flex items-start gap-3">
-                    <div class="bg-white text-[#4dd0e1] rounded-md p-2 w-10 h-10 flex items-center justify-center text-xl shrink-0"><i class="fa-regular fa-face-smile"></i></div>
-                    <div class="flex-1 text-[11px] text-cyan-50 truncate"><span class="font-bold text-base block text-white leading-none mb-1">SPH-Kurzanleitungen</span><p>Portfolioabgabe & Export/Import...</p></div>
+                <div class="bg-[#d32f2f] text-white rounded shadow-md flex md:flex-col items-center p-3 md:p-0 md:h-44 md:w-44 border-t-4 border-red-800/30 justify-center text-center">
+                    <div class="md:h-24 flex items-center justify-center text-2xl md:text-4xl md:w-full md:bg-white md:text-red-600"><i class="fa-solid fa-shuffle"></i></div>
+                    <div class="md:bg-white md:text-gray-700 md:w-full md:p-2 md:text-[10px] md:font-bold md:border-t border-gray-200 flex-1 flex items-center justify-center">
+                        <span class="ml-3 md:ml-0 font-medium md:font-bold text-sm md:text-[10px] leading-tight">Schulbildungsnetz</span>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
 
-    <main id="unterricht-page" class="bg-white flex-1 p-4 md:p-6 hidden page-transition">
+
+    <main id="unterricht-page" class="bg-white flex-1 p-4 md:p-8 max-w-5xl mx-auto w-full hidden page-transition">
         <div class="flex items-center gap-3 mb-5 border-b border-gray-100 pb-3">
             <i class="fa-solid fa-address-book text-3xl text-gray-800"></i>
             <h2 class="text-3xl font-bold text-gray-800 tracking-tight">mein Unterricht</h2>
         </div>
-        <div class="grid grid-cols-2 md:flex md:gap-3 gap-2 mb-5 text-xs font-semibold">
-            <button class="bg-[#4a7cb5] text-white py-2 px-4 rounded shadow-sm active:scale-95 transition-all flex items-center gap-1.5"><i class="fa-solid fa-calendar-days"></i> Einträge wochenweise</button>
-            <button class="bg-[#e0a955] text-white py-2 px-4 rounded shadow-sm active:scale-95 transition-all flex items-center gap-1.5"><i class="fa-regular fa-face-smile"></i> Kurzanleitungen</button>
+        
+        <div class="flex gap-2 mb-6 text-xs font-semibold">
+            <button class="bg-[#4a7cb5] text-white py-2 px-4 rounded shadow-sm flex items-center gap-1.5"><i class="fa-solid fa-calendar-days"></i> Einträge wochenweise</button>
+            <button class="bg-[#e0a955] text-white py-2 px-4 rounded shadow-sm flex items-center gap-1.5"><i class="fa-regular fa-face-smile"></i> Kurzanleitungen</button>
         </div>
+
         <h3 class="text-2xl font-extrabold text-gray-800 mb-4 tracking-tight">Aktuelle Einträge</h3>
+        
         <div class="grid grid-cols-12 text-[10px] text-gray-500 font-bold border-b border-gray-300 pb-1.5 mb-2 uppercase tracking-wider">
             <div class="col-span-5">Name</div>
             <div class="col-span-4">Thema / Inhalt</div>
             <div class="col-span-3 text-right">Weiteres</div>
         </div>
+
         <div class="grid grid-cols-12 items-start py-3 border-b border-gray-100">
             <div class="col-span-5">
                 <span id="txt-ut-fach" class="font-extrabold text-lg text-[#4a7cb5] block">Arbeitslehre 09dr</span>
@@ -150,84 +181,103 @@
             </div>
             <div class="col-span-3 text-right"><button class="bg-[#4a7cb5] text-white text-[10px] py-1 px-2 rounded font-bold">alle Einträge</button></div>
         </div>
-        <button class="mt-8 bg-gray-100 text-gray-600 font-bold text-xs py-2 px-4 rounded block mx-auto transition-colors" onclick="showPage('start-page')">Zurück zur Übersicht</button>
+
+        <button class="mt-8 bg-gray-100 text-gray-600 font-bold text-xs py-2 px-4 rounded block mx-auto shadow-sm" onclick="showPage('start-page')">Zurück zur Übersicht</button>
     </main>
 
-    <main id="vertretung-page" class="bg-white flex-1 p-4 md:p-6 hidden page-transition">
+
+    <main id="vertretung-page" class="bg-white flex-1 p-4 md:p-8 max-w-6xl mx-auto w-full hidden page-transition">
         <h2 class="text-2xl font-normal text-gray-800 mb-4 tracking-tight">Mein Vertretungsplan</h2>
+        
         <div class="border border-[#428bca] rounded-md overflow-hidden shadow-md">
             <div class="bg-[#428bca] text-white px-4 py-2.5 flex items-center justify-between text-xs font-semibold">
                 <span>Freitag, den 22.05.2026</span>
                 <span class="bg-[#3276b1] px-1.5 py-0.5 rounded text-[10px]">21. Woche</span>
             </div>
-            <div class="p-4 bg-white space-y-3">
-                <div class="flex justify-between items-center"><div class="text-[10px] text-gray-400 italic" id="txt-vp-update">Aktualisiert: 18:03</div></div>
+            
+            <div class="p-4 bg-white space-y-4">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-base font-semibold text-gray-800">Vertretungen am 22.05.2026</h3>
+                    <div class="text-[10px] text-gray-400 italic" id="txt-vp-update">Aktualisiert: Live</div>
+                </div>
+
                 <div class="overflow-x-auto border border-gray-200 rounded">
                     <table class="w-full text-left border-collapse text-[11px]">
                         <thead>
-                            <tr class="bg-gray-100 text-gray-700 border-b border-gray-200 font-bold">
-                                <th class="p-2.5 border-r border-gray-200">Stunde</th>
-                                <th class="p-2.5 border-r border-gray-200">Klasse</th>
-                                <th class="p-2.5 border-r border-gray-200">Lehrkraft</th>
-                                <th class="p-2.5 border-r border-gray-200">Art</th>
-                                <th class="p-2.5 border-r border-gray-200">Fach</th>
-                                <th class="p-2.5">Raum</th>
+                            <tr class="bg-gray-100 text-gray-700 border-b border-gray-200 font-bold select-none">
+                                <th class="p-3 border-r border-gray-200">Stunde</th>
+                                <th class="p-3 border-r border-gray-200">Klasse</th>
+                                <th class="p-3 border-r border-gray-200">Lehrkraft</th>
+                                <th class="p-3 border-r border-gray-200">Art</th>
+                                <th class="p-3 border-r border-gray-200">Fach</th>
+                                <th class="p-3">Raum</th>
                             </tr>
                         </thead>
                         <tbody class="text-gray-800 divide-y divide-gray-100">
-                            <tr>
-                                <td id="td-vp-stunde" class="p-2.5 border-r border-gray-200 font-bold text-center">1 - 2</td>
-                                <td id="td-vp-klasse" class="p-2.5 border-r border-gray-200 font-medium text-blue-600">09aR, 09bR, 09dR</td>
-                                <td id="td-vp-lehrer" class="p-2.5 border-r border-gray-200 italic">Sco</td>
-                                <td class="p-2.5 border-r border-gray-200"><span id="td-vp-art" class="bg-amber-100 text-amber-800 font-semibold px-1.5 py-0.5 rounded text-[10px]">Vertretung</span></td>
-                                <td id="td-vp-fach" class="p-2.5 border-r border-gray-200 font-bold">Eth</td>
-                                <td id="td-vp-raum" class="p-2.5 font-bold text-green-700 text-center">A6</td>
+                            <tr class="hover:bg-blue-50/50 transition-colors">
+                                <td id="td-vp-stunde" class="p-3 border-r border-gray-200 font-bold text-center bg-gray-50/30">1 - 2</td>
+                                <td id="td-vp-klasse" class="p-3 border-r border-gray-200 font-medium text-blue-600">09aR, 09bR, 09dR</td>
+                                <td id="td-vp-lehrer" class="p-3 border-r border-gray-200 italic">Sco</td>
+                                <td class="p-3 border-r border-gray-200"><span id="td-vp-art" class="bg-amber-100 text-amber-800 font-semibold px-2 py-0.5 rounded text-[10px]">Vertretung</span></td>
+                                <td id="td-vp-fach" class="p-3 border-r border-gray-200 font-bold">Eth</td>
+                                <td id="td-vp-raum" class="p-3 font-bold text-green-700 text-center bg-green-50/50">A6</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-        <button class="mt-8 bg-gray-100 text-gray-600 font-bold text-xs py-2 px-4 rounded block mx-auto" onclick="showPage('start-page')">Hauptmenü</button>
+
+        <button class="mt-8 bg-gray-100 text-gray-600 font-bold text-xs py-2 px-4 rounded block mx-auto shadow-sm" onclick="showPage('start-page')">Hauptmenü</button>
     </main>
 
-    <main id="admin-page" class="bg-gray-900 text-white flex-1 p-4 md:p-6 hidden page-transition">
-        <div class="flex items-center gap-2 mb-5 text-yellow-400"><i class="fa-solid fa-user-gear text-2xl"></i><h2 class="text-xl font-bold tracking-tight">Live Dashboard Editor</h2></div>
+
+    <main id="admin-page" class="bg-gray-900 text-white flex-1 p-4 md:p-8 max-w-4xl mx-auto w-full hidden page-transition">
+        <div class="flex items-center gap-2 mb-6 text-yellow-400 border-b border-gray-800 pb-3">
+            <i class="fa-solid fa-user-gear text-2xl"></i>
+            <h2 class="text-xl font-bold tracking-tight">Live Dashboard Konfiguration</h2>
+        </div>
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
             <div class="bg-gray-800 p-4 rounded-md border border-gray-700 space-y-3">
                 <h3 class="text-xs font-bold text-orange-400 border-b border-gray-700 pb-1 uppercase tracking-wider">Modul: Mein Unterricht</h3>
-                <div><label class="block text-gray-400 mb-1">Hausaufgaben Anzahl:</label><input type="number" id="inp-tasks-num" value="3" class="w-full bg-gray-700 border border-gray-600 rounded px-2.5 py-1.5 text-white"></div>
+                <div><label class="block text-gray-400 mb-1">Unerledigte Aufgaben:</label><input type="number" id="inp-tasks-num" value="3" class="w-full bg-gray-700 border border-gray-600 rounded px-2.5 py-1.5 text-white"></div>
                 <div><label class="block text-gray-400 mb-1">Fach Name:</label><input type="text" id="inp-ut-fach" value="Arbeitslehre 09dr" class="w-full bg-gray-700 border border-gray-600 rounded px-2.5 py-1.5 text-white"></div>
-                <div><label class="block text-gray-400 mb-1">Thema:</label><input type="text" id="inp-ut-thema" value="Präsentationen" class="w-full bg-gray-700 border border-gray-600 rounded px-2.5 py-1.5 text-white"></div>
+                <div><label class="block text-gray-400 mb-1">Aktuelles Thema:</label><input type="text" id="inp-ut-thema" value="Präsentationen" class="w-full bg-gray-700 border border-gray-600 rounded px-2.5 py-1.5 text-white"></div>
             </div>
+
             <div class="bg-gray-800 p-4 rounded-md border border-gray-700 space-y-3">
                 <h3 class="text-xs font-bold text-green-400 border-b border-gray-700 pb-1 uppercase tracking-wider">Modul: Vertretungsplan</h3>
                 <div class="grid grid-cols-2 gap-2">
                     <div><label class="block text-gray-400 mb-1">Stunde:</label><input type="text" id="inp-vp-stunde" value="1 - 2" class="w-full bg-gray-700 border border-gray-600 rounded px-2.5 py-1.5 text-white"></div>
                     <div><label class="block text-gray-400 mb-1">Raum:</label><input type="text" id="inp-vp-raum" value="A6" class="w-full bg-gray-700 border border-gray-600 rounded px-2.5 py-1.5 text-white"></div>
+                    
                     <div class="col-span-2">
-                        <label class="block text-gray-400 mb-1 text-green-400 font-bold">Art der Änderung (Status-Typ):</label>
-                        <select id="inp-vp-art" class="w-full bg-gray-700 border border-emerald-500 rounded px-2.5 py-1.5 text-white font-semibold focus:ring-1 focus:ring-emerald-400">
-                            <option value="Vertretung">Vertretung (Standard)</option>
+                        <label class="block text-emerald-400 font-bold mb-1">Art der Vertretung (Status-Typ):</label>
+                        <select id="inp-vp-art" class="w-full bg-gray-700 border border-emerald-500 rounded px-2.5 py-1.5 text-white font-semibold">
+                            <option value="Vertretung">Vertretung</option>
                             <option value="Entfall">Entfall</option>
-                            <option value="Raumvertretung">Raumänderung / Raumvertretung</option>
+                            <option value="Raumvertretung">Raumvertretung</option>
                             <option value="Freisetzung">Freisetzung</option>
                             <option value="Selbstst. Arbeiten">Selbstständiges Arbeiten</option>
                         </select>
                     </div>
+
                     <div class="col-span-2"><label class="block text-gray-400 mb-1">Klassen:</label><input type="text" id="inp-vp-klasse" value="09aR, 09bR, 09dR" class="w-full bg-gray-700 border border-gray-600 rounded px-2.5 py-1.5 text-white"></div>
-                    <div><label class="block text-gray-400 mb-1">Lehrer (Kürzel):</label><input type="text" id="inp-vp-lehrer" value="Sco" class="w-full bg-gray-700 border border-gray-600 rounded px-2.5 py-1.5 text-white"></div>
+                    <div><label class="block text-gray-400 mb-1">Lehrer Kürzel:</label><input type="text" id="inp-vp-lehrer" value="Sco" class="w-full bg-gray-700 border border-gray-600 rounded px-2.5 py-1.5 text-white"></div>
                     <div><label class="block text-gray-400 mb-1">Fach:</label><input type="text" id="inp-vp-fach" value="Eth" class="w-full bg-gray-700 border border-gray-600 rounded px-2.5 py-1.5 text-white"></div>
                 </div>
             </div>
         </div>
-        <div class="pt-4 max-w-md mx-auto space-y-2">
-            <button onclick="saveAdminChanges()" class="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-extrabold py-2.5 rounded shadow text-sm">Änderungen abspeichern & pushen</button>
-            <button onclick="showPage('start-page')" class="w-full bg-gray-800 text-gray-300 py-2 rounded text-center block">Abbrechen</button>
+
+        <div class="pt-6 max-w-sm mx-auto space-y-2">
+            <button onclick="saveAdminChanges()" class="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-extrabold py-2.5 rounded shadow text-sm transition-transform active:scale-95 cursor-pointer">Änderungen anwenden & pushen</button>
+            <button onclick="showPage('start-page')" class="w-full bg-gray-800 text-gray-300 py-2 rounded text-center block transition-colors hover:bg-gray-700">Abbrechen</button>
         </div>
     </main>
 
-    <div class="w-32 h-1 bg-black/60 mx-auto rounded-full mt-5 md:hidden select-none"></div>
+    <div class="w-32 h-1 bg-black/40 mx-auto rounded-full mt-6 md:hidden select-none"></div>
+
 
     <script>
         function showPage(pageId) {
@@ -242,22 +292,14 @@
             });
 
             setTimeout(() => {
+                // Dynamischer Background & Matrix Switch je nach Layout/Seite
                 if (pageId === 'start-page') {
-                    document.body.className = "w-full max-w-md md:max-w-5xl mx-auto min-h-screen shadow-2xl flex flex-col pb-6 bg-[#e5d3be] relative transition-all";
+                    document.body.style.backgroundColor = ""; 
                     document.getElementById('mobile-header').classList.replace('hidden', 'flex');
-                    document.getElementById('desktop-header').classList.add('hidden');
-                } else if (pageId === 'vertretung-page') {
-                    document.body.className = "w-full max-w-md md:max-w-5xl mx-auto min-h-screen shadow-2xl flex flex-col pb-6 bg-white relative transition-all";
-                    document.getElementById('mobile-header').classList.add('hidden');
-                    document.getElementById('desktop-header').classList.replace('hidden', 'flex');
                 } else if (pageId === 'admin-page') {
-                    document.body.className = "w-full max-w-md md:max-w-5xl mx-auto min-h-screen shadow-2xl flex flex-col pb-6 bg-gray-900 relative transition-all";
-                    document.getElementById('mobile-header').classList.replace('hidden', 'flex');
-                    document.getElementById('desktop-header').classList.add('hidden');
+                    document.body.style.backgroundColor = "#111827";
                 } else {
-                    document.body.className = "w-full max-w-md md:max-w-5xl mx-auto min-h-screen shadow-2xl flex flex-col pb-6 bg-white relative transition-all";
-                    document.getElementById('mobile-header').classList.replace('hidden', 'flex');
-                    document.getElementById('desktop-header').classList.add('hidden');
+                    document.body.style.backgroundColor = "#ffffff";
                 }
 
                 target.classList.remove('hidden');
@@ -280,21 +322,25 @@
             const vpRaum = document.getElementById('inp-vp-raum').value;
             const vpArt = document.getElementById('inp-vp-art').value;
 
-            // Startseiten-Kachel aktualisieren
+            // Zuweisungen Startseite (Sowohl Mobile Text als auch Desktop Widgets)
             document.getElementById('badge-tasks').innerText = numTasks;
-            document.getElementById('txt-start-tasks').innerHTML = `${numTasks} Hausaufgaben`;
-            document.getElementById('vp-badge-type').innerText = vpArt;
+            document.getElementById('txt-start-tasks').innerHTML = `${numTasks} Hausaufgaben <span class='font-normal text-orange-200'>unerledigt</span>`;
+            document.getElementById('txt-start-tasks-desktop').innerText = `${numTasks} Hausaufgaben unerledigt`;
             
-            // Layout-Farbmetrik je nach Typ (Rot bei Entfall, Grün bei Vertretung)
-            const artCell = document.getElementById('td-vp-art');
-            artCell.innerText = vpArt;
+            const pKlasse = vpKlasse.split(',')[0].trim();
+            document.getElementById('txt-start-vp').innerHTML = `22.05. ${vpStunde}. <span class="font-bold">${pKlasse}... in ${vpRaum}</span>`;
+            document.getElementById('txt-start-vp-desktop').innerHTML = `22.05. ${vpStunde}. <span class="font-bold">${vpArt}</span> in ${vpRaum}`;
+
+            // Vertretungsplan Tabelle UI Style Anpassung (Rot bei Entfall)
+            const cellArt = document.getElementById('td-vp-art');
+            cellArt.innerText = vpArt;
             if(vpArt === 'Entfall') {
-                artCell.className = "bg-red-100 text-red-800 font-bold px-1.5 py-0.5 rounded text-[10px]";
+                cellArt.className = "bg-red-100 text-red-800 font-bold px-2 py-0.5 rounded text-[10px]";
             } else {
-                artCell.className = "bg-amber-100 text-amber-800 font-semibold px-1.5 py-0.5 rounded text-[10px]";
+                cellArt.className = "bg-amber-100 text-amber-800 font-semibold px-2 py-0.5 rounded text-[10px]";
             }
 
-            // Text-Synchronisation
+            // Sync Unterseiten
             document.getElementById('txt-ut-fach').innerText = utFach;
             document.getElementById('txt-ut-thema').innerText = utThema;
             document.getElementById('td-vp-stunde').innerText = vpStunde;
@@ -303,13 +349,12 @@
             document.getElementById('td-vp-fach').innerText = vpFach;
             document.getElementById('td-vp-raum').innerText = vpRaum;
 
-            // Zeit-Stempel generieren
-            const uhrzeit = new Date().toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' });
-            document.getElementById('txt-vp-update').innerText = `Aktualisiert: ${uhrzeit}`;
+            // Timestamp Update
+            const time = new Date().toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' });
+            document.getElementById('txt-vp-update').innerText = `Aktualisiert: ${time} Uhr`;
 
             showPage('start-page');
         }
     </script>
 </body>
 </html>
-
